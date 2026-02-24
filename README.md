@@ -1,7 +1,7 @@
-#Telegram Bot Led Control
-#Credits: bot logic is based on Aiogram tutorials
+# Telegram Bot Led Control
+# Credits: bot logic is based on Aiogram tutorials
 
-#How ittt work?
+# How ittt work?
 1. **Python + aiogram** #Telegram bot controling led activation by commands
 2. **Serial Bridge** #Send signals from telegram to arduino
 3. **Arduino** #Controll 6 leds, red when command red, and green when command green :) command both - 6 leds turn on
@@ -13,3 +13,4 @@
 
 #Author
 SOSNINSKY
+
