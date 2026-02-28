@@ -29,7 +29,7 @@ async def cmd_start(message: types.Message):
     await message.answer(f"Salute {message.from_user.full_name} which state of led you will choose?",  reply_markup=get_main_keyboard())
 
 
-@dp.message(F.text == "green")
+@dp.message(F.text.strip().lower() == "green")
 async def light_on_green(message: types.Message):
     try:
        ser.write(b'2')
@@ -40,7 +40,7 @@ async def light_on_green(message: types.Message):
 
 
 
-@dp.message(F.text == "red")
+@dp.message(F.text.strip().lower() == "red")
 async def light_on_red(message: types.Message):
     try:
        ser.write(b'1')
@@ -50,7 +50,7 @@ async def light_on_red(message: types.Message):
     
 
 
-@dp.message(F.text == "both")
+@dp.message(F.text.strip().lower() == "both")
 async def light_on_both(message: types.Message):
     try:
        ser.write(b'3')
