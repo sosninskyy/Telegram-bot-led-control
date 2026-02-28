@@ -8,6 +8,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 ser = serial.Serial('COM4', 9600) #Maybe in your arduino will be another port
 time.sleep(2) 
 
+YOUR_ID =  #There you insert id of your account
 API_TOKEN = '' #there you insert token of your bot
 
 
@@ -26,37 +27,49 @@ def get_main_keyboard():
 
 @dp.message(CommandStart())
 async def cmd_start(message: types.Message):
-    await message.answer(f"Salute {message.from_user.full_name} which state of led you will choose?",  reply_markup=get_main_keyboard())
+    if message.from_user.id == YOUR_ID:         
+        await message.answer(f"Salute {message.from_user.full_name} which state of led you will choose?",  reply_markup=get_main_keyboard())
+    else:
+        await message.answer("You are not in whitelist in this bot")    
 
 
 @dp.message(F.text.strip().lower() == "green")
 async def light_on_green(message: types.Message):
-    try:
-       ser.write(b'2')
-       await message.answer("turn on green led")
-    except Exception as e:
-        print(f"Something went wrong :0, {e}")
+    if message.from_user.id == YOUR_ID:
+        try:
+            ser.write(b'2')
+            await message.answer("turn on green led")
+        except Exception as e:
+            print(f"Something went wrong :0, {e}")
+    else:       
+        await message.answer("You are not in whitelist in this bot")    
     
 
 
 
 @dp.message(F.text.strip().lower() == "red")
 async def light_on_red(message: types.Message):
-    try:
-       ser.write(b'1')
-       await message.answer("turn on red led")
-    except Exception as e:
-        print(f"Something went wrong :0, {e}")
+    if message.from_user.id == YOUR_ID:
+        try:            
+            ser.write(b'1')
+            await message.answer("turn on red led")
+        except Exception as e:
+            print(f"Something went wrong :0, {e}")
+    else:
+        await message.answer("You are not in whitelist in this bot")    
     
 
 
 @dp.message(F.text.strip().lower() == "both")
 async def light_on_both(message: types.Message):
-    try:
-       ser.write(b'3')
-       await message.answer("turn on both led")
-    except Exception as e:
-        print(f"Something went wrong :0, {e}")
+    if message.from_user.id == YOUR_ID:
+        try:
+            ser.write(b'3')
+            await message.answer("turn on both led")
+        except Exception as e:
+            print(f"Something went wrong :0, {e}")
+    else:
+        await message.answer("You are not in whitelist in this bot")    
     
 
 
