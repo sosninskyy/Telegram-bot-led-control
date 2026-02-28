@@ -8,7 +8,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 ser = serial.Serial('COM4', 9600) #Maybe in your arduino will be another port
 time.sleep(2) 
 
-API_TOKEN = '8616031036:AAHlPfGmqo9CEXO9BTEFy6Chl1CVWBuJjzI' #there you insert token of your bot
+API_TOKEN = '' #there you insert token of your bot
 
 
 bot = Bot(token=API_TOKEN)
